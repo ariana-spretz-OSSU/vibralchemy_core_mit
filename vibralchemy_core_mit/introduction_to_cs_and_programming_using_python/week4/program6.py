@@ -64,3 +64,30 @@ for num in range(11):
         print('')	
 
 """
+
+"""Write a script that processes YouTube SEO title strings. 
+The program iterates through the string to clean up unnecessary spaces, 
+manually counts characters, and uses simple guessing logic 
+to validate whether it contains keywords."""
+
+
+SEO_titles = "solfeggio, frequencies, meditation, music, binaural, beats, healing, sounds, relaxation, stress, relief, sleep, aid, chakra, balancing, mindfulness, spiritual, awakening"
+title = input("Enter a YouTube SEO title: ")
+
+cleaned_title = title.strip()
+print(cleaned_title)
+
+join_sentence = ""
+for word in cleaned_title:
+    join_sentence += word + " "
+    whole_sentence = join_sentence[:-1]
+print(whole_sentence)
+
+lengh_sentence = len(whole_sentence)
+print(lengh_sentence)
+
+while word in new_sentence:
+    if word in SEO_titles:
+        print("SEO is correct")
+    else:
+        print("SEO is incomplete")
