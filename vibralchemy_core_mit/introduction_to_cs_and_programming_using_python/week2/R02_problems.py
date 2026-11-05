@@ -8,8 +8,11 @@ name = input("Enter your name: ")
 l = len(name) - 5
 print("The length of your name minus 5 is:", l)
 
-""" Enter your name: Ariana
-The length of your name minus 5 is: 1 """
+"""
+Output:
+Enter your name: Ariana
+The length of your name minus 5 is: 1
+"""
 
 ####################################################################################
 # Practice Problem 2
@@ -24,7 +27,11 @@ new_string = test_string[:n] + test_string[n+1:]
 print("Old string:", test_string)
 print("New string:", new_string)
 
-
+"""
+Output:
+Old string: We want to remove the nth character from this string
+New string: We want o remove the nth character from this string
+"""
 
 ####################################################################################
 # Practice Problem 3
@@ -39,8 +46,10 @@ if len(my_string) > 10 or len(my_string) < 5:
 else:
     print("False")
     
-# True
-
+"""
+Output: 
+True
+"""
 
 ####################################################################################
 # Practice Problem 4
@@ -59,5 +68,8 @@ for i in my_string:
         
 print("The number of 'e's in the string is:", count)
 
-
+"""
+Output:
+The number of 'e's in the string is: 5
+"""
 
