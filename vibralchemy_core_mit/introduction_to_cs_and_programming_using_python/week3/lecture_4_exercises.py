@@ -75,26 +75,39 @@ print(len(seen))
 # your code here
 
 secret_number = 4
+guess = int(input("Guess the secret number: "))
 if secret_number >= 1 and secret_number <= 10:
-    print(secret_number)
-elif secret_number == secret_number:
+    print(guess)
+elif guess == secret_number:
     print(secret_number)
 else:
     print('')
 
+"""
+Output:
+Guess the secret number: 4
+4
+"""
 ################################################
 #################### YOU TRY IT ###################
 # Hardcode a number as a secret number. Write a program that 
 # checks through all the numbers between 1 to 10 and prints the 
 # secret value. If it's not found, prints that it didn't find it. 
 # your code here   
-secret_number = 4 
-for num in range(11):
-    if num == secret_number:
-        print(secret_number)
-    else:
-        print('Secret number not found.')
-
+secret_number = 44 
+guess = int(input("Guess the secret number: "))
+if secret_number >= 1 and secret_number <= 10:
+    print(guess)
+elif guess == secret_number:
+    print(secret_number)
+else:
+    print('Secret number not found.')
+    
+"""
+Output:
+Guess the secret number: 56
+Secret number not found.
+"""
 ####################################################
 
 ####################################################
