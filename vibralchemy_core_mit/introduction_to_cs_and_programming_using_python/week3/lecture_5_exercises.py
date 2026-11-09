@@ -45,7 +45,24 @@ Output:
 # determines how many times you can add increment to itself 
 # until you start to get a floating point error.
 # your code here
+x = 0
+count = 20 
+add = str(0.022)
+increment = 0.022
+len_increment = len(add)
+floating_point = add.find(".")
+N = len_increment - floating_point - 1
+for i in range(count):
+    x += increment 
+    formated_value = f"{x:.{N}f}"
+    if str(x) != formated_value:
+        break
+print(f"Number of times until you start to get a floating point error: { i + 1 }")
 
+"""
+Output:
+Number of times until you start to get a floating point error: 5
+"""
 #################################################
 #################################################
 #################################################

@@ -5,10 +5,19 @@ def add(x,y):
     return x+y
 def mult(x,y):
     print(x*y)
+
 # add(1,2)
+# Output: 3
+
 # print(add(2,3))
+# Output: 5
+
 # mult(3,4)
+# Output: 12
+
 # print(mult(4,5))
+# Output: 20
+
 ##################################################
 ############ YOU TRY IT ####################
 # Fix this buggy code so it works according to the specification:
@@ -18,11 +27,20 @@ def is_triangular(n):
         summation of natural numbers (1+2+3+...+k) 
     """
     total = 0
-    for i in range(n):
+    for i in range(n + 1):
         total += i
         if total == n:
-            print(True)
-    print(False)
+            return True
+    return False
+print(is_triangular(4))  
+# Output: False
+
+print(is_triangular(6))  
+# Output: True
+
+print(is_triangular(1))  
+# Output: True
+            
 # # start by runing it on simple test cases
 # print(is_triangular(4))  # print False
 # print(is_triangular(6))  # print True
@@ -47,9 +65,12 @@ def apply(criteria,n):
     """ 
     # your code here
 def is_even(x):
+    sum_int = 0
     return x%2==0
 how_many = apply(is_even,10)
 # print(how_many)
+
+
 ############## YOU TRY IT ###############
 # Write a function that takes in an int and two functions as 
 # parameters (each takes in an int and returns a float). 
@@ -75,10 +96,20 @@ def is_palindrome(s):
     A palindrome is a string that contains the same 
     sequence of characters forward and backward """
     # your code here
-# For example:
-# print(is_palindrome("222"))   # prints True
-# print(is_palindrome("2222"))   # prints True
-# print(is_palindrome("abc"))   # prints False
+    for char in range(len(s)):
+        reverse = s[::-1]
+        if s[char] == reverse[char]:
+            return True
+        else:
+            return False
+
+print(is_palindrome("222"))
+# Output: True
+print(is_palindrome("2222"))   
+# Output: True
+print(is_palindrome("abc"))  
+# Output: False
+
 def f_yields_palindrome(n, f):
     """ n is a positive int
         f is a function that takes in an int and returns an int
