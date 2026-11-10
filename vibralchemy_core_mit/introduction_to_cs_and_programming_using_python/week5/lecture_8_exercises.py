@@ -6,16 +6,16 @@ def add(x,y):
 def mult(x,y):
     print(x*y)
 
-# add(1,2)
+add(1,2)
 # Output: 3
 
-# print(add(2,3))
+print(add(2,3))
 # Output: 5
 
-# mult(3,4)
+mult(3,4)
 # Output: 12
 
-# print(mult(4,5))
+print(mult(4,5))
 # Output: 20
 
 ##################################################
@@ -53,7 +53,20 @@ def count_nums_with_sqrt_close_to(n, epsilon):
         epsilon is a positive number < 1
     Returns how many integers have a square root within epsilon of n """
     # your code here
-#print(count_nums_with_sqrt_close_to(10, 0.1))
+    num_guesses = 0
+    low = 0
+    high = n
+    guess = (high + low)/2.0
+    while abs(guess**2 - n) >= epsilon:
+        if guess**2 < n :
+            low = guess
+        else:
+            high = guess
+            guess = (high + low)/2.0
+            num_guesses += 1
+    return (guess, 'is close to square root of', n, 'and num_guesses are =', num_guesses)
+
+print(count_nums_with_sqrt_close_to(10, 0.1))
 #############################################################
 
 ############## YOU TRY IT ###############
