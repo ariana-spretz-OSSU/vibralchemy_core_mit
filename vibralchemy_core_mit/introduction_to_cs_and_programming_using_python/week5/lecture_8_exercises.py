@@ -50,23 +50,22 @@ print(is_triangular(1))
 ###################### YOU TRY IT ######################
 def count_nums_with_sqrt_close_to(n, epsilon):
     """ n is an int > 2
-        epsilon is a positive number < 1
+    epsilon is a positive number < 1
     Returns how many integers have a square root within epsilon of n """
     # your code here
-    num_guesses = 0
-    low = 0
-    high = n
-    guess = (high + low)/2.0
-    while abs(guess**2 - n) >= epsilon:
-        if guess**2 < n :
-            low = guess
-        else:
-            high = guess
-            guess = (high + low)/2.0
-            num_guesses += 1
-    return (guess, 'is close to square root of', n, 'and num_guesses are =', num_guesses)
+    ints_count = 0
+    i = 1
+    while (i**0.5 < n + epsilon):
+        if abs(i**0.5 - n) < epsilon:
+            ints_count += 1
+        i += 1
+    return (f'The number of integers that have a square root within {epsilon} of {n} is: {ints_count}.')
 
 print(count_nums_with_sqrt_close_to(10, 0.1))
+
+"""
+The number of integers that have a square root within 0.1 of 10 is: 4.
+"""
 #############################################################
 
 ############## YOU TRY IT ###############
