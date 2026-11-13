@@ -1,5 +1,5 @@
 """
-Program that automates a mathematical volume ladder for audio mixes
+Program that automates a mathematical volume ladder for audio mixes simulator.
 
 Exercise: Write a while loop that starts at a volume of 100 and decrements by 5 at each step, stopping strictly when it reaches zero.
 """

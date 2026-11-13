@@ -1,7 +1,9 @@
-"""Write a script that processes YouTube SEO title strings. 
+"""
+Write a script that processes YouTube SEO title strings. 
 The program iterates through the string to clean up unnecessary spaces, 
 manually counts characters, and uses simple guessing logic 
-to validate whether it contains keywords."""
+to validate whether it contains keywords.
+"""
 
 # Setting variables
 SEO_titles = "solfeggio frequencies, meditation music, binaural beats, healing sounds, relaxation, stress relief, sleep, aid, chakra balancing, mindfulness, spiritual awakening"

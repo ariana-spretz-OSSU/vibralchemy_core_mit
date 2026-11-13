@@ -76,12 +76,20 @@ def apply(criteria,n):
     (i.e. return True when criteria is applied to them)
     """ 
     # your code here
-def is_even(x):
+    
     sum_int = 0
+    for i in range(0, n + 1):
+         if criteria(i):
+             sum_int += 1
+    return sum_int
+    
+def is_even(x):
     return x%2==0
+   
 how_many = apply(is_even,10)
-# print(how_many)
+print(how_many)
 
+# Output: 6
 
 ############## YOU TRY IT ###############
 # Write a function that takes in an int and two functions as 
@@ -94,9 +102,18 @@ def max_of_both(n, f1, f2):
     Applies f1 and f2 on all numbers between 0 and n (inclusive). 
     Returns the maximum value of all these results.
     """
-    # your code here
-# print(max_of_both(2, lambda x:x-1, lambda x:x+1))  # prints 3
-# print(max_of_both(10, lambda x:x*2, lambda x:x/2))  # prints 20
+    max_value = f1(0)
+    for i in range(0, n +1):
+        if f1(i) > max_value:
+            max_value = f1(i)
+        if f2(i) > max_value:
+                max_value = f2(i)
+    return max_value
+
+print(max_of_both(2, lambda x:x-1, lambda x:x+1))  
+# Output: 3
+print(max_of_both(10, lambda x:x*2, lambda x:x/2))  
+# Output: 20
 ################################
 
 ###################################
@@ -127,7 +144,15 @@ def f_yields_palindrome(n, f):
         f is a function that takes in an int and returns an int
     Returns True if applying f on n returns a number that is a
     palindrome and False otherwise.  """
-    # your code here
+    num_str = str(f(n))
+    reverse = num_str[::-1]
+    if num_str == reverse:
+        return True
+    else:
+        return False
+       
+   
+        
 # For example:
 def f(x):
     return x+1
@@ -135,10 +160,10 @@ def g(x):
     return x*2
 def h(x):
     return x//2
-# print(f_yields_palindrome(2, f))   # prints True
-# print(f_yields_palindrome(76, f))   # prints True
-# print(f_yields_palindrome(11, g))   # prints True
-# print(f_yields_palindrome(123, h))   # prints False
+print(f_yields_palindrome(2, f))   # prints True
+print(f_yields_palindrome(76, f))   # prints True
+print(f_yields_palindrome(11, g))   # prints True
+print(f_yields_palindrome(123, h))   # prints False
     
 ###################################
 ##################################
