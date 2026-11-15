@@ -35,10 +35,19 @@ def sum_and_prod(L):
     is the product of all elements in L 
     """
     # your code here
-
- 
-
-# print(sum_and_prod([4,6,2,5]))   # prints (17, 240)
+    sum = 0
+    prod = 1
+    for i in range(len(L)):
+        print(i)
+        sum += L[i] 
+        print(L[i])
+        print(sum)
+        prod *= L[i] 
+        print(L[i])
+        print(prod)
+    return (sum, prod)
+        
+print(sum_and_prod([4,6,2,5]))   # Output: (17, 240)
 
 #############################################
 ################## AT HOME ####################
@@ -52,9 +61,7 @@ def always_sunny(t1, t2):
     first = t1[0] + t2[0]
     return (sun[0], first)
 
-# always_sunny(('cloudy' ), ('cold',))  # returns what?
-
-
+always_sunny(('cloudy' ), ('cold',))  # Output: ('sunny', 'ccold')
 
 def max_of_both(n, f1, f2):
     """ n is an int
@@ -62,15 +69,29 @@ def max_of_both(n, f1, f2):
     Applies f1 and f2 on all numbers between 0 and n (inclusive). 
     Returns the maximum value of all these results.
     """
-    # your code here
+    max = 0
+    for i in range(0, n + 1):
+        if f1(i) > max:
+            max = f1(i)
+            print("max is:", max)
+        if f2(i) > max:
+            max = f2(i)
+            print("max is:", max)
+    return max
 
-# print(max_of_both(2, lambda x:x-1, lambda x:x+1))  # prints 3
-# print(max_of_both(10, lambda x:x*2, lambda x:x/2))  # prints 20
+print(max_of_both(2, lambda x:x-1, lambda x:x+1))  # Output: 3
+print(max_of_both(10, lambda x:x*2, lambda x:x/2))  # Output: 20
 
 
 def sublist_sum(L):
     """ L is a list whose elements are lists with int elements
     Returns the sum of all int elements. """
     # your code here
+    sum = 0
+    for i in range(len(L)):
+        for n in range(len(L[i])):
+            sum += L[i][n]
+    
+    return sum
 
-# print(sublist_sum([[1,2], [4,5,6]])) # prints 18
+print(sublist_sum([[1,2], [4,5,6]])) # Output: 18
