@@ -1,13 +1,13 @@
 # Problem 1: Given a list of numbers. Write a function to turn every item of 
 # a list into its square.
 def square_list(my_list):
-    pass
+    for i in range(len(my_list)):
+        my_list[i] = my_list[i] **2
+    return my_list
 
 # test
-print(square_list([1, 2, 3, 4]))
-print(square_list([10, 12, 13]))
-
-
+print(square_list([1, 2, 3, 4])) # Output: [1, 4, 9, 16]
+print(square_list([10, 12, 13])) # Output: [100, 144, 169]
 
 # Problem 2: Write a Python program to concatenate element-wise 
 # three given lists of same length
@@ -18,13 +18,13 @@ list3 = ['100', '200', '300', '400', '500']
 # Expected output : ['0red100', '1green200', '2black300', '3blue400', '4white500']
 
 def concatenate_lists(list_a, list_b, list_c):
-    pass
+    items = []
+    for i in range(len(list_a)):
+        items += [list_a[i] + list_b[i] + list_c[i]]
+    return items
 
 # test
-print(concatenate_lists(list1, list2, list3))
-
-
-
+print(concatenate_lists(list1, list2, list3)) # Output : ['0red100', '1green200', '2black300', '3blue400', '4white500']
 
 # Problem 3: Write a function to shift a given list to the right or left 
 # direction by a specified amount. Direction, rotation amount, and a 
@@ -36,15 +36,18 @@ print(concatenate_lists(list1, list2, list3))
 # Rotate the input list in Right direction by 4:
 # [7, 8, 9, 10, 1, 2, 3, 4, 5, 6]
 
-# edit this to be "right" or "left"
-direction = "right" 
-
 def rotate_list(input_list, direction, shift):
-    pass
-
+    if input_list == []:
+        return []
+    else:
+        shift = shift % len(input_list)
+    if direction == "left":
+        return (input_list[shift:]) + (input_list[:shift])
+    elif direction == "right":
+        return (input_list[-shift:]) + (input_list[:-shift])
 # test 
 input_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(rotate_list(input_list, "right", 14))
-print(rotate_list(input_list, "left", 4))
+print(rotate_list(input_list, "right", 14)) # Output: [7, 8, 9, 10, 1, 2, 3, 4, 5, 6]
+print(rotate_list(input_list, "left", 4)) # Output: [5, 6, 7, 8, 9, 10, 1, 2, 3, 4]
 
 

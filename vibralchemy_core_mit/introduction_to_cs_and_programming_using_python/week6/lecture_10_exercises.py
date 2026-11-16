@@ -106,13 +106,15 @@ print(brunch) # Output: ['bacon', 'eggs', 'juice', 'toast', 'jam']
 
 ## Question 3.
 def apply_to_each(L, f):
- """ L is a list of numbers
- f is a list that takes in a number and returns a number
- Mutate L such that you apply function f to every element in L """
+    """ L is a list of numbers
+    f is a list that takes in a number and returns a number
+    Mutate L such that you apply function f to every element in L """
+    for i in range(len(L)):
+        L[i] = f(L[i])
+    
 test = [1,-2,3]
 apply_to_each(test, lambda x: x**2)
-print(test) # prints [1,4,9]
+print(test) # Output: [1,4,9]
 test = [-7, 8, 5, -8, -3]
 apply_to_each(test, abs)
-print(test) # prints [7, 8, 5, 8, 3]
-
+print(test) # Output: [7, 8, 5, 8, 3]
