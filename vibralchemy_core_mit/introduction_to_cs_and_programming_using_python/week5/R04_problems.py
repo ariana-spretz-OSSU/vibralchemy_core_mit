@@ -33,24 +33,22 @@ print(count_number_one((1,2,3,4,5,1,1))) # Output: 3
 # only common elements of both tuples. 
 # INSERT CODE BELOW HERE
 def common_elements(t1, t2):
-    t_common = ()
+    t_common = ()          
     if len(t1) < len(t2):
-        Tlen = len(t2)
-    i = 0
-    while i in range(Tlen):
-        if t1[i] == t2[i]:
+        boundary = len(t1)
+    else:
+        boundary = len(t2)
+
+    for i in range(boundary):
+        if t1[i] in t2 and t1[i] not in t_common:
+            t_common += (t1[i],)
+        elif t2[i] in t1 and t2[i] not in t_common:
             t_common += (t2[i],)
-        i += 1
     return t_common
-
-
-
-# uncomment to test function
-# print(common_elements((2,3,4), (3,4,5,6)))
+print(common_elements((2,3,4), (3,4,5,6))) # Output: (3, 4)
 
 
 #############################################################################
-# Problem 4: Practice working with Python Lists
 # Write a Python program to remove sublists from a given list of lists, which 
 # contain an element outside a given range.
 # e.g 
@@ -59,12 +57,12 @@ def common_elements(t1, t2):
 # After removing sublists from a given list of lists, which contain an 
 # element outside the given range of 12 - 20 (inclusive):
 # [[13, 14, 15, 17]]
-# INSERT CODE BELOW HERE
-
-
-
-
-
-# uncomment to test function
-# print(remove_list_range([[2], [0], [1, 2, 3], [0, 1, 2, 3, 6, 7], [9, 11], [13, 14, 15, 17]], 13, 17))
-
+def remove_list_range(L, rem_first, rem_last):
+    L_copy = L[:]
+    for i in range(len(L)):
+        for j in range(len(L[i])):
+            if L[i][j] < rem_first or L[i][j] > rem_last:
+                L_copy.remove(L[i])
+                break
+    return L_copy          
+print(remove_list_range([[2], [0], [1, 2, 3], [0, 1, 2, 3, 6, 7], [9, 11], [13, 14, 15, 17]], 13, 17)) # Output: [[13, 14, 15, 17]]

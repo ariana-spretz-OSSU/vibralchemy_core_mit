@@ -9,5 +9,3 @@ with n as a parameter. Otherwise returns False.
  # Your code here 
 # Examples: 
 all_true() # prints 6 
-1 
-# your function here
