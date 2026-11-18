@@ -54,8 +54,10 @@ def has_player_won(secret_word, letters_guessed):
     returns: boolean, True if all the letters of secret_word are in letters_guessed,
         False otherwise
     """
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+    return True
 
 
 def get_word_progress(secret_word, letters_guessed):
@@ -67,8 +69,14 @@ def get_word_progress(secret_word, letters_guessed):
     returns: string, comprised of letters and asterisks (*) that represents
         which letters in secret_word have not been guessed so far
     """
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    letters_not_guessed = ''
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            letters_not_guessed += '*'
+        else:
+            letters_not_guessed += letter
+            
+    return letters_not_guessed
 
 
 def get_available_letters(letters_guessed):
@@ -80,9 +88,11 @@ def get_available_letters(letters_guessed):
       letters have not yet been guessed. The letters should be returned in
       alphabetical order
     """
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
+    letters_not_yet_guessed = ''
+    for letter in string.ascii_lowercase:
+        if letter not in letters_guessed:
+            letters_not_yet_guessed += letter
+    return letters_not_yet_guessed
 
 
 def hangman(secret_word, with_help):
