@@ -7,20 +7,21 @@ def remove_all(L, e):
     Mutates L to remove all elements in L that are equal to e
     Returns None.
     """
-    # your code here
+    for i in L[:]:
+        if i == e:
+            L.remove(i)
     
+Lin = [1,2,2,2]
+remove_all(Lin, 2)
+print(Lin)    # prints [1]
 
-# Lin = [1,2,2,2]
-# remove_all(Lin, 2)
-# print(Lin)    # prints [1]
+Lin = [1,2,2,2]
+remove_all(Lin, 1)
+print(Lin)    # prints [2, 2, 2]
 
-# Lin = [1,2,2,2]
-# remove_all(Lin, 1)
-# print(Lin)    # prints [2, 2, 2]
-
-# Lin = [1,2,2,2]
-# remove_all(Lin, 0)
-# print(Lin)    # prints [1, 2, 2, 2]
+Lin = [1,2,2,2]
+remove_all(Lin, 0)
+print(Lin)    # prints [1, 2, 2, 2]
 
 #######################################
 
