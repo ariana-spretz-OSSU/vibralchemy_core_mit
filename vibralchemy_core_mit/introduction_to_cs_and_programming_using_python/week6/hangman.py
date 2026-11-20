@@ -133,85 +133,101 @@ def hangman(secret_word, with_help):
       this letter to their guessed word and continue playing normally.
 
     Follows the other limitations detailed in the problem write-up.
-    """
-    len_secret_word = len(secret_word)
-    separator = '---------------'
+    """    
+    separator = '--------------'
     count_guesses = 10
     vowels = 'aeiou'
     letters_guessed = []
     i = 0
-    with_help = False
     
-    print(separator, 'Welcome to Hangman!', separator)
-    print('I am thinking of a word that is', len_secret_word,'letters long.')
-    print(separator * 4)
+    print('Welcome to Hangman!')
+    print('I am thinking of a word that is', len_secret_word(secret_word),'letters long.')
+    print(separator)
 
-    while count_guesses >= 0: 
-        guess = input('Please guess a letter: ') 
+    while count_guesses > 0: 
         print('You have', count_guesses, 'guesses left.')
-        print(get_available_letters(letters_guessed)) 
-        print(separator * 4) 
-        if guess.isalpha():
-            guess.lower() 
-            if guess in secret_word and guess not in letters_guessed:
+        print('Available letters:', get_available_letters(letters_guessed))
+        guess = input('Please guess a letter: ')        
+        if guess.isalpha() and len(guess) == 1:
+            guess = guess.lower() 
+            if guess in letters_guessed:
+                print("Oops! You've already guessed that letter:", get_word_progress(secret_word, letters_guessed)) 
+                print(separator)                      
+            elif guess in secret_word:
                 letters_guessed.extend(guess) 
                 print('Good guess:', get_word_progress(secret_word, letters_guessed))  
-                print(separator * 4)
-            elif guess in secret_word and guess in letters_guessed:
-                print("Oops! You've already guessed that letter:", get_word_progress(secret_word, letters_guessed)) 
-                print(separator * 4)                      
-            
-            if guess not in vowels and guess not in letters_guessed and guess not in secret_word:
+                print(separator)         
+            elif guess not in vowels and guess not in secret_word:
+                letters_guessed.extend(guess) 
                 print('Oops! That letter is not in my word:', get_word_progress(secret_word, letters_guessed))
-                print(separator * 4)
+                print(separator)
                 count_guesses -= 1
-            elif guess in vowels and guess not in letters_guessed and guess not in secret_word:
+            elif guess in vowels and guess not in secret_word:
+                letters_guessed.extend(guess) 
                 print('Oops! That letter is not in my word:', get_word_progress(secret_word, letters_guessed))
-                print(separator * 4)
+                print(separator)
                 count_guesses -= 2
-            
-            if count_guesses == 0:
-                print(separator * 4) 
-                print('Sorry, you ran out of guesses. The word was', secret_word)
-                print('Game Over!')   
-                print(separator * 4)         
-                break
-            if len(secret_word) == len(letters_guessed):
-                print(separator * 4) 
-                print('Congratulations, you won!')
-                print('Your total score for this game is:', score)
-                print(separator * 4)
-                break
                      
-        elif guess == '!':
-            revealed_letter = letter_to_reveal(get_available_letters(letters_guessed))
-            letters_guessed += revealed_letter
-            print('Letter revealed:', revealed_letter, get_word_progress(secret_word, letters_guessed))
-            count_guesses -= 3
-            if count_guesses <= 3:
-                print('You have currently', count_guesses, 'guesses left.')
-            if count_guesses == 1:
-                print('Oops! Not enough guesses left:', get_word_progress(secret_word, letters_guessed)) 
-                print(separator * 4) 
+        elif guess == '!' and with_help:
+            if count_guesses < 3:
+                print('Oops! Not enough guesses left:', get_word_progress(secret_word, letters_guessed))
+                print(separator)
+            if count_guesses >= 3:
+                revealed_letter = letter_to_reveal(secret_word, letters_guessed)
+                letters_guessed += revealed_letter
+                count_guesses -= 3
+                print('Letter revealed:', revealed_letter)
+                print(get_word_progress(secret_word, letters_guessed))
+                print(separator) 
+
         else:
             print('Oops! That is not a valid letter. Please input a letter from the alphabet:', get_word_progress(secret_word, letters_guessed))
-            print(separator * 4) 
-             
-        i += 1     
+            print(separator) 
+
+        if count_guesses <= 0:
+                print('Sorry, you ran out of guesses. The word was', secret_word, '.')
+                break
             
+        if get_word_progress(secret_word, letters_guessed) == secret_word:
+            print('Congratulations, you won!')
+            print('Your total score for this game is:', score(count_guesses, secret_word, secret_word))
+            break
+             
+        i += 1          
 
 def letter_to_reveal(secret_word, letters_guessed):
     choose_from = ''
-    if letter in letters_guessed and letter in secret_word:
-        if letter not in choose_from:
-          choose_from += letter
+    for letter in secret_word:
+        if letter not in letters_guessed and letter not in choose_from:
+            choose_from += letter            
+    if not choose_from:
+        return ''  
     new = random.randint(0, len(choose_from)-1)
     revealed_letter = choose_from[new]
     return revealed_letter
 
-def score(word, number_of_guesses):
-    total_score = (guesses_remaining + (4 * number_of_unique_letters in secret_word) + (3 * len_secret_word))
-    
+def len_secret_word(secret_word): 
+    return len(secret_word)  
+
+def number_of_unique_letters(word):
+    unique = []
+    for i in range(len(word)):
+        if word[i] not in unique:
+            unique.extend(word[i])    
+    return len(unique)
+
+def guesses_remaining(count_guesses):
+    return count_guesses
+
+def score(count_guesses, word, secret_word):
+    guess_remaining = guesses_remaining(count_guesses)
+    num_unique_letters = number_of_unique_letters(word)
+    len_s_word = len_secret_word(secret_word)
+    total_score = (guess_remaining + (4 * num_unique_letters) + (3 * len_s_word))
+    return total_score
+
+
+
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the lines to test
 
@@ -219,7 +235,7 @@ if __name__ == "__main__":
     # To test your game, uncomment the following three lines.
 
     secret_word = choose_word(wordlist)
-    with_help = False
+    with_help = True
     hangman(secret_word, with_help)
 
     # After you complete with_help functionality, change with_help to True

@@ -30,51 +30,55 @@ print(Lin)    # prints [1, 2, 2, 2]
 # Write down what values each variable has
 # Draw the memory diagram to help you keep track of aliases and clones
 
-# cool = ['blue', 'green']
-# warm = ['red', 'yellow', 'orange']
-# print(cool)
-# print(warm)
+cool = ['blue', 'green']
+warm = ['red', 'yellow', 'orange']
+print(cool) # Output: ['blue', 'green']
+print(warm) # Output: ['red', 'yellow', 'orange']
 
-# colors1 = [cool]
-# print(colors1)
-# colors1.append(warm)
-# print('colors1 = ', colors1)
+colors1 = [cool]
+print(colors1) # Output: [['blue', 'green']]
+colors1.append(warm)
+print('colors1 = ', colors1) # Output: colors1 =  [['blue', 'green'], ['red', 'yellow', 'orange']]
 
-# colors2 = [['blue', 'green'],
-#           ['red', 'yellow', 'orange']]
-# print('colors2 =', colors2)
+colors2 = [['blue', 'green'],
+          ['red', 'yellow', 'orange']]
+print('colors2 =', colors2) # Output: colors2 = [['blue', 'green'], ['red', 'yellow', 'orange']]
 
-# warm.remove('red') 
-# print('colors1 = ', colors1)
-# print('colors2 =', colors2)
+warm.remove('red') 
+print('colors1 = ', colors1) # Output: colors1 =  [['blue', 'green'], ['yellow', 'orange']]
+print('colors2 =', colors2) # Output: colors2 = [['blue', 'green'], ['red', 'yellow', 'orange']]
 
-# for e in colors1:
-#     print('e =', e)
+for e in colors1:
+    print('e =', e) 
+""" 
+Output: blue
+green
+yellow
+orange 
+"""
 
-# for e in colors1:
-#     if type(e) == list:
-#         for e1 in e:
-#             print(e1)
-#     else:
-#         print(e)
+for e in colors1:
+    if type(e) == list:
+        for e1 in e:
+            print(e1) # Output: e = ['blue', 'green']
+    else:
+        print(e) # Output: e = ['yellow', 'orange']
 
-# flat = cool + warm
-# print('flat =', flat)
+flat = cool + warm
+print('flat =', flat) # Output: flat = ['blue', 'green', 'yellow', 'orange']
 
-# print(flat.sort())
-# print('flat =', flat)
+print(flat.sort()) # Output: None
+print('flat =', flat) # Output: flat = ['blue', 'green', 'orange', 'yellow']
 
-# new_flat = sorted(flat, reverse = True)
-# print('flat =', flat)
-# print('new_flat =', new_flat)
+new_flat = sorted(flat, reverse = True)
+print('flat =', flat) # Output: flat = ['blue', 'green', 'orange', 'yellow']
+print('new_flat =', new_flat) # Output: new_flat = ['yellow', 'orange', 'green', 'blue']
 
-# cool[1] = 'black'
-# print(cool)
-# print(colors1)
+cool[1] = 'black'
+print(cool) # Output: ['blue', 'black']
+print(colors1) # Output: [['blue', 'black'], ['yellow', 'orange']]
 
 ###############################
-
-
 
 
 ############################################
@@ -84,27 +88,13 @@ def repeat(L, n):
     """ L is a list of ints
         n is a positive int
     Mutates L to contain whatever elements L has right now repeated n times. """
-    # your code here 
-    
-# Lin = [1,2,3]
-# repeat(Lin, 3)
-# print(Lin)    # prints [1, 2, 3, 1, 2, 3, 1, 2, 3]
-
-# Think about why the following solution does not work!
-def repeat(L, n):
-    """ L is a list of ints
-        n is a positive int
-    Mutates L to contain whatever elements L has right now repeated n times. """
-    # your code here 
-    Lnew = []
-    for i in range(n):
-        for e in L:
-            Lnew.append(e)
-    Lin = Lnew  # hint, even thought we reuse the name Lin here, we make it point to a NEW object!
-    
-# Lin = [1,2,3]
-# repeat(Lin, 3)
-# print(Lin)   # prints [1, 2, 3] which is wrong!
+    original_len = len(L)
+    for j in range(0, n - 1):
+        for i in range(0, original_len):
+            L.append(L[i])
+Lin = [1,2,3]
+repeat(Lin, 3)
+print(Lin)    # Output: [1, 2, 3, 1, 2, 3, 1, 2, 3]
 
 
 ###########################################¤#N######¤#N#

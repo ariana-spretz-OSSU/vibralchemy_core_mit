@@ -600,7 +600,7 @@ def play_game():
 play_game()
 
 
-
+"""
 
 
 ################################################
@@ -690,7 +690,7 @@ def play_game():
         print('YOU LOSE')
     
 # play_game()
-
+"""
 
 
 

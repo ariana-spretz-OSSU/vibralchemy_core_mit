@@ -1,7 +1,7 @@
 ########## YOU TRY IT #############
 ## What is returned by this list comprehension expression?
-# L = [x**2 for x in [2, 'a', 3, 4.0] if type(x) == int] 
-# print(L)
+L = [x**2 for x in [2, 'a', 3, 4.0] if type(x) == int] 
+print(L) # Output: [4, 9]
 
 ###################################+
 ########## YOU TRY IT AT HOME #############
