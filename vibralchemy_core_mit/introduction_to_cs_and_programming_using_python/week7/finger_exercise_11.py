@@ -7,9 +7,12 @@ then sorts the remaining elements in ascending order.
  If you run out of items to remove, Lin is mutated to an empty list.
  Does not return anything.
  """
- # Your code here
-# Examples:
+ for e in L:
+        if L[k] == e:
+            L.remove(L[k - 1])
+            L.sort()
+
 L = [1,6,3]
 k = 1
 remove_and_sort(L, k)
-print(L) # prints the list [3, 6]
+print(L) # Output: [3, 6]

@@ -5,13 +5,21 @@ original_list = [1,2,35,10,5,8,9,23]
 # a) Using List concatenation create a new list from the orignal list, 
 # removing all multiples of 5 from a list of numbers.
 # expected output: [1, 2, 8, 9, 23]
-# INSERT CODE HERE
-
+new_list = []
+for num in original_list:
+    if num % 5 == 0:
+        del(num)
+    else:
+        new_list += [num]
+print(new_list) # Output: [1, 2, 8, 9, 23]
 # b) Using list concatenation create a new list from the original list, 
 # where each element is half the original element
 # Expected output: [0.5, 1.0, 17.5, 5.0, 2.5, 4.0, 4.5, 11.5]
-# INSERT CODE HERE
-
+new_list = []
+for num in original_list:
+    half_num = num / 2
+    new_list += [half_num]
+print(new_list) # Output: [0.5, 1.0, 17.5, 5.0, 2.5, 4.0, 4.5, 11.5]
 
 ########################################################################
 # Problem 2: Write a Function to insert a specified element x in a given list 

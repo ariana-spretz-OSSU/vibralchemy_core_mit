@@ -12,6 +12,9 @@ print(L) # Output: [4, 9]
 # If L = ['abc', 'm', 'p', 'xyz', '123', 57]
 # It makes ['b', 'y', '2']
 L = ['abc', 'm', 'p', 'xyz', '123', 57]
+new_list = [e[1] for e in L if type(e) == str and len(e) == 3]
+
+print(new_list) # Output: ['b', 'y', '2']
 
 
 ## There is a file lec12_wordle.py that is buggy!
