@@ -39,18 +39,45 @@ def insert_element_list1(lst, x, n):
     n: x will be inserted after every nth element
     Returns: new modified list 
     """
-    # INSERT CODE HERE
-    pass
-
-
+    modified_list = []
+    for i in range(len(lst)):
+        modified_list.append(lst[i])
+        if (i + 1) % n == 0:
+            modified_list.append([x])
+    return modified_list
 # testing
 nums = [1, 3, 5, 7, 9, 11,0, 2, 4, 6, 8, 10, 8, 9, 0, 4, 3, 0]
 x = 20
 n = 4
-print(insert_element_list1(nums, x, n))
-
+print(insert_element_list1(nums, x, n)) # Output: [1, 3, 5, 7, 20, 9, 11, 0, 2, 20, 4, 6, 8, 10, 20, 8, 9, 0, 4, 20, 3, 0]
 
 ########################################################################
+# Problem 3: Write a Function to sort list of lists containing integers such that the 
+# sub-lists are sorted in increasing order. 
+
+# Example:
+# Original list of tuples:
+# [[10, 10.12, 10.11], [5, 5.3, 4.9], [2.4, 2.6, 2.2]]
+# Expected output:
+# [[10, 10.11, 10.12], [4.9, 5, 5.3], [2.2, 2.4, 2.6]]
+
+def sort_list_of_lists(lst):
+    """
+    Parameters:
+    lst: input list
+    n: index to sort by
+    Returns: the sorted list 
+    """
+    list_sorted = []
+    for i in range(len(lst)): 
+        list_sorted.append(sorted(lst[i]))
+    return list_sorted
+
+# testing
+items = [[10, 10.12, 10.11], [5, 5.3, 4.9], [2.4, 2.6, 2.2]]
+print(sort_list_of_lists(items)) # Output: [[10, 10.11, 10.12], [4.9, 5, 5.3], [2.2, 2.4, 2.6]]
+
+# How would you sort in decreasing order?
 # Problem 3: Write a Function to sort list of lists containing integers such that the 
 # sub-lists are sorted in increasing order. How would you sort in decreasing order?
 
@@ -67,16 +94,17 @@ def sort_list_of_lists(lst):
     n: index to sort by
     Returns: the sorted list 
     """
-    # INSERT CODE HERE
-    pass
-
+    list_sorted = []
+    for i in range(len(lst)): 
+        list_sorted.append(sorted(lst[i], reverse=True))
+    return list_sorted
 
 # testing
 items = [[10, 10.12, 10.11], [5, 5.3, 4.9], [2.4, 2.6, 2.2]]
-print(sort_list_of_lists(items))
-
+print(sort_list_of_lists(items)) # Output: [[10.12, 10.11, 10], [5.3, 5, 4.9], [2.6, 2.4, 2.2]]
 
 ########################################################################
+
 # Problem 4: Write a Function to split a given list into size n chunks 
 # using list comprehension. If the list does not divide equally, the last 
 # chunk should be short. Return the new list. 
@@ -95,20 +123,14 @@ def split_list(lst, n):
     n: size of chunks
     Returns: new split list 
     """
-    # INSERT CODE HERE
-    pass
+    new_list = [lst[i:i+n] for i in range(0, len(lst), n)] 
+    return new_list
+        
 
 # testing
 nums = [12,45,23,67,78,90,45,32,100,76,38,62,73,29,83]
 n = 4
-print(split_list(nums,n))
+print(split_list(nums,n)) # Output: [[12, 45, 23, 67], [78, 90, 45, 32], [100, 76, 38, 62], [73, 29, 83]]
 n = 5
-print(split_list(nums,n))
-
-
-
-
-
-
-
+print(split_list(nums,n)) # Output: [[12, 45, 23, 67, 78], [90, 45, 32, 100, 76], [38, 62, 73, 29, 83]]
 
