@@ -1,6 +1,3 @@
-"""
-Implement the function that meets the specification below:
-"""
 def sum_str_lengths(L):
     """
     L is a non-empty list containing either: 
@@ -11,9 +8,20 @@ def sum_str_lengths(L):
     element that is not a string or a list, or L's sublists 
     contain an element that is not a string, raise a ValueError. 
     """ 
-# Your code here 
+    length_total = 0
+    for elem in L:
+        if type(elem) == str:
+            length_total += len(elem)
+        elif type(elem) == list:
+            for sub_elem in elem:
+                if type(sub_elem) == str:
+                    length_total += len(sub_elem)
+                else:
+                    raise ValueError
+        else:
+            raise ValueError
+    return length_total
 # Examples: 
-print(sum_str_lengths(["abcd", ["e", "fg"]])) # prints 7 
+print(sum_str_lengths(["abcd", ["e", "fg"]])) # Output: 7 
 print(sum_str_lengths([12, ["e", "fg"]])) # raises ValueError 
 print(sum_str_lengths(["abcd", [3, "fg"]])) # raises ValueError 
-1 # your function here 
