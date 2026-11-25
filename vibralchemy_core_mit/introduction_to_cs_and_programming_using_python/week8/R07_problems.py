@@ -6,10 +6,12 @@
 # e.g
 # {"item1": 2, "item2": 7, "item3": 20} returns {"item1": 7, "item2": 12, "item3": 25}
 def new_dict(input_dict):
-    pass
-    
+    add_dict = {}
+    for k, v in input_dict.items():
+        add_dict[k] = v + 5
+    return add_dict
 input_dict = {"item1": 2, "item2": 7, "item3": 20}
-print(new_dict({"item1": 2, "item2": 7, "item3": 20})) # expect {"item1": 7, "item2": 12, "item3": 25}
+print(new_dict({"item1": 2, "item2": 7, "item3": 20})) # Output: {"item1": 7, "item2": 12, "item3": 25}
 
 
 
