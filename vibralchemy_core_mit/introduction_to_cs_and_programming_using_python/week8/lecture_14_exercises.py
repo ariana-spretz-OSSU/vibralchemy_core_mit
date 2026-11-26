@@ -97,17 +97,24 @@ def add_to_d(d, L):
     tuple in L and the associated value is the second element of a 
     tuple in L. If the key is already in d, do nothing to its value. 
     If the key cannot be added, raise a ValueError. Returns None. """
-    pass
-    
-# d = {}
-# L = [(1,2), (3,4)]
-# add_to_d(d, L)
-# print(d)   # d is mutated to be {1: 2, 3: 4}
-# d = {1:1}
-# L = [(1,2), (3,4)]
-# add_to_d(d, L)
-# print(d)   # d is mutated to be {1: 1, 3: 4}
-# d = {1:1}
-# L = [(3,4), ([1,2,3], 5)]
-# add_to_d(d, L)   
-# # raises a ValueError because its trying to add a list (mutable obj) as key
+    for k, v in L:
+        try:
+            if k not in d:
+                d[k] = v
+        except TypeError:
+            raise ValueError
+
+d = {}
+L = [(1,2), (3,4)]
+add_to_d(d, L)
+print(d)   # Output: {1: 2, 3: 4}
+
+d = {1:1}
+L = [(1,2), (3,4)]
+add_to_d(d, L)
+print(d)   # Output: {1: 1, 3: 4}
+
+d = {1:1}
+L = [(3,4), ([1,2,3], 5)]
+add_to_d(d, L)   
+# Output: raises a ValueError because its trying to add a list (mutable obj) as key

@@ -13,8 +13,6 @@ def new_dict(input_dict):
 input_dict = {"item1": 2, "item2": 7, "item3": 20}
 print(new_dict({"item1": 2, "item2": 7, "item3": 20})) # Output: {"item1": 7, "item2": 12, "item3": 25}
 
-
-
 # Problem 2:
 # Write a function to check all values are same in a dictionary. 
 # Return True if they are all the same, False otherwise
@@ -23,13 +21,20 @@ print(new_dict({"item1": 2, "item2": 7, "item3": 20})) # Output: {"item1": 7, "i
 # {'item1': 'apple', 'item2': 'apple', 'item3': 'orange'} return False
 
 def check_same_values(input_dict):
-    pass
+    list_input = list(input_dict.values())
+    values = list_input[0]
+    for v in list_input:
+        if v != values:
+            return False
+    else:
+        return True
+            
 
 # testing
 input_dict = {'item1': 'apple', 'item2': 'apple', 'item3': 'apple'}
-print(check_same_values(input_dict))  # expect True
+print(check_same_values(input_dict))  # Output: True
 input_dict = {'item1': 'apple', 'item2': 'apple', 'item3': 'orange'}
-print(check_same_values(input_dict))  # expect False
+print(check_same_values(input_dict))  # Output: False
 
 
 
@@ -41,13 +46,16 @@ print(check_same_values(input_dict))  # expect False
 # Example output: [['c', 10], ['b', 5], ['d', 3], ['e', 2], ['a', 1]]
 
 def dict_to_sorted_list(input_dict):
-    pass
+    list_of_lists = []
+    for t in input_dict.items():
+        list_of_lists.append(list(t))
+  
+    lists_ordered = sorted(list_of_lists, key=lambda x: x[1], reverse=True)
+    return lists_ordered 
 
 # testing
 input_dict = {'a': 1, 'b': 5, 'c': 10, 'd': 3, 'e': 2}  
-print(dict_to_sorted_list(input_dict))  # expect: [['c', 10], ['b', 5], ['d', 3], ['e', 2], ['a', 1]]
-
-
+print(dict_to_sorted_list(input_dict))  # Output: [['c', 10], ['b', 5], ['d', 3], ['e', 2], ['a', 1]]
 
 # Problem 4:
 # Given a list of dictionaries with item names and amounts in the form {'item': 'my_item_name', 'amount': 'my_amount'}
@@ -56,12 +64,19 @@ print(dict_to_sorted_list(input_dict))  # expect: [['c', 10], ['b', 5], ['d', 3]
 # Expected Output: {'item1': 1150, 'item2': 300}
 
 def combine_dicts(input_dicts):
-    pass
+    one_dict = {}
+    for d in input_dicts:
+        item = d['item']       
+        amount = d['amount']   
+        if item in one_dict:
+            one_dict[item] += amount 
+        else:
+            one_dict[item] = amount             
+    return one_dict
     
-
 # testing
 input_dicts = [{'item': 'item1', 'amount': 400}, {'item': 'item2', 'amount': 300}, {'item': 'item1', 'amount': 750}]
-print(combine_dicts(input_dicts))  # expect {'item1': 1150, 'item2': 300}
+print(combine_dicts(input_dicts))  # Output: {'item1': 1150, 'item2': 300}
 
 
     
