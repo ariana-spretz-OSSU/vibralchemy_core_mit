@@ -3,33 +3,28 @@
 # of all strings inside L:   
     
 def total_len_recur(L):
-    if len(L) == 1:
-        return ____
+    if len(L) == 0:
+        return 0
     else:
-        return ____
+        return len(L[0]) + total_len_recur(L[1:])
 
 test = ["ab", "c", "defgh"]
-# print(total_len_recur(test))  # should print 8
+print(total_len_recur(test))  # Output: 8
 
 ##########################################
 
 ################### YOU TRY IT ##############
 def in_lists_of_list(L, e):
-    """
-    L is a list whose elements are lists containing ints
-    Returns True if e is an element within the lists of L
-    and False otherwise. 
-    Hint, the in operator is useful here, i.e. e in something
-    """
-    # your code here
+    if len(L) == 0:
+        return False
+    elif e in L:
+        return True
+    else:
+        return in_lists_of_list(L[1:], e)
 
-    
-
-test = [[1,2], [3,4], [5,6,7]]
-# print(in_lists_of_list(test, 3))  # prints True
-
-test = [[1,2], [3,4], [5,6,7]]
-# print(in_lists_of_list(test, 0))  # prints False
+test = [[1, 2], [3, 4], [5, 6, 7]]
+print(in_lists_of_list(test, 3))  # Output: True
+print(in_lists_of_list(test, 0))  # Output: False
 
 ###############################################
 
@@ -88,12 +83,14 @@ def f(L):
     """ L is a non-empty list of lowercase letters.
     Returns the letter earliest in the alphabet. """
     if len(L) == 1:
+        return L[0]          
+    
+    if L[0] < f(L[1:]):
         return L[0]
     else:
-        if L[0] < f((L[0])):
-            return L[0]
-        
-# print(f(['z', 'a', 'b', 'c', 'd']))  # should print 'a'
+        return f(L[1:])     
+
+print(f(['z', 'a', 'b', 'c', 'd']))  # Output: 'a'
 
 
 def g(L, e):
