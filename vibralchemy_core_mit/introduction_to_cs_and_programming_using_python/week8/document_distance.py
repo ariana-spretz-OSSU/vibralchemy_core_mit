@@ -38,7 +38,8 @@ def text_to_list(input_text):
     Returns:
         list representation of input_text, where each word is a different element in the list
     """
-    pass
+    word_by_word = input_text.split()
+    return word_by_word
 
 
 ### Problem 1: Get Frequency ###
@@ -53,7 +54,13 @@ def get_frequencies(input_iterable):
     Note: 
         You can assume that the only kinds of white space in the text documents we provide will be new lines or space(s) between words (i.e. there are no tabs)
     """
-    pass
+    new_item = {}
+    for e in input_iterable:
+        if e not in new_item:
+            new_item[e] = 1
+        else:
+            new_item[e] += 1
+    return new_item
 
 
 ### Problem 2: Letter Frequencies ###
@@ -66,7 +73,8 @@ def get_letter_frequencies(word):
         is a letter in word and the corresponding int
         is the frequency of the letter in word
     """
-    pass
+    frequency = get_frequencies(word)
+    return frequency
 
 
 ### Problem 3: Similarity ###
@@ -172,26 +180,26 @@ if __name__ == "__main__":
     ###############################################################
 
     ## Tests Problem 0: Prep Data
-    # test_directory = "tests/student_tests/"
-    # hello_world, hello_friend = load_file(test_directory + 'hello_world.txt'), load_file(test_directory + 'hello_friends.txt')
-    # world, friend = text_to_list(hello_world), text_to_list(hello_friend)
-    # print(world)      # should print ['hello', 'world', 'hello']
-    # print(friend)     # should print ['hello', 'friends']
+    test_directory = "tests/student_tests/"
+    hello_world, hello_friend = load_file(test_directory + 'hello_world.txt'), load_file(test_directory + 'hello_friends.txt')
+    world, friend = text_to_list(hello_world), text_to_list(hello_friend)
+    print(world)      # should print ['hello', 'world', 'hello']
+    print(friend)     # should print ['hello', 'friends']
 
     ## Tests Problem 1: Get Frequencies
-    # test_directory = "tests/student_tests/"
-    # hello_world, hello_friend = load_file(test_directory + 'hello_world.txt'), load_file(test_directory + 'hello_friends.txt')
-    # world, friend = text_to_list(hello_world), text_to_list(hello_friend)
-    # world_word_freq = get_frequencies(world)
-    # friend_word_freq = get_frequencies(friend)
-    # print(world_word_freq)    # should print {'hello': 2, 'world': 1}
-    # print(friend_word_freq)   # should print {'hello': 1, 'friends': 1}
+    test_directory = "tests/student_tests/"
+    hello_world, hello_friend = load_file(test_directory + 'hello_world.txt'), load_file(test_directory + 'hello_friends.txt')
+    world, friend = text_to_list(hello_world), text_to_list(hello_friend)
+    world_word_freq = get_frequencies(world)
+    friend_word_freq = get_frequencies(friend)
+    print(world_word_freq)    # should print {'hello': 2, 'world': 1}
+    print(friend_word_freq)   # should print {'hello': 1, 'friends': 1}
 
     ## Tests Problem 2: Get Letter Frequencies
-    # freq1 = get_letter_frequencies('hello')
-    # freq2 = get_letter_frequencies('that')
-    # print(freq1)      #  should print {'h': 1, 'e': 1, 'l': 2, 'o': 1}
-    # print(freq2)      #  should print {'t': 2, 'h': 1, 'a': 1}
+    freq1 = get_letter_frequencies('hello')
+    freq2 = get_letter_frequencies('that')
+    print(freq1)      #  should print {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+    print(freq2)      #  should print {'t': 2, 'h': 1, 'a': 1}
 
     ## Tests Problem 3: Similarity
     # test_directory = "tests/student_tests/"
